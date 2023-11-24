@@ -1,5 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { IMenuType} from "@models/menuType";
+import {ITourTypeSelect} from "@models/tours";
+import {TicketService} from "@service/tickets/tickets.service";
+import {SettingsService} from "@service/settings/settings.service";
 
 @Component({
   selector: 'app-aside',
@@ -7,7 +10,6 @@ import { IMenuType} from "@models/menuType";
   styleUrls: ['./aside.component.scss']
 })
 export class AsideComponent implements OnInit {
-
   @Output() updateMenuType: EventEmitter<IMenuType> = new EventEmitter()
 
 
@@ -15,12 +17,20 @@ export class AsideComponent implements OnInit {
   selectedMenuType: IMenuType
 
 
-  constructor() { }
+  constructor(private ticketService: TicketService,
+              private  settingService: SettingsService) { }
 
   changeType(ev: {ev: Event, value: IMenuType}): void {
     console.log('ev', ev)
     this.updateMenuType.emit(ev.value);
   }
+
+  tourTypes: ITourTypeSelect[] = [
+    {label: 'Все', value: 'all'},
+    {label: 'Одиночный', value: 'single'},
+    {label: 'Групповой', value: 'multi'}
+  ]
+
 
   ngOnInit(): void {
 
@@ -28,6 +38,31 @@ export class AsideComponent implements OnInit {
       {type: 'custom', label : 'Обычное'},
       {type: 'extended', label : 'Расширенное'}
     ]
+  }
+
+  changeTourType(ev:  {ev: Event, value: ITourTypeSelect}): void {
+    this.ticketService.updateTour(ev.value)
+  }
+
+  selectDate(ev: string) {
+    console.log('ev', ev)
+    this.ticketService.updateTour({date:ev})
+  }
+
+  initRestError(): void {
+    this.ticketService.getError().subscribe({
+      next:(data) =>{},
+      error: (err) =>{
+        console.log("err", err)
+      },
+      complete: () => {}
+    });
+  }
+
+  initSettingsData(): void{
+    this.settingService.loadUserSettingsSubject({
+      saveToken:false
+    });
   }
 
 }

@@ -1,4 +1,18 @@
 :host {
   height: 60px;
   width: 100%;
+  display: block;
+}
+
+.time-block{
+  position: absolute;
+  right: 0;
+  padding: 4px;
+}
+
+.user-login {
+  position: absolute;
+  right: 15vh;
+  top: 2vh;
+  padding: 4px;
 }

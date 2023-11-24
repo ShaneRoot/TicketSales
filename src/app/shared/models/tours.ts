@@ -1,16 +1,15 @@
 export interface ITour {
-  id?: string,
-  _id?: string,
+  id: string,
   name: string,
   description: string,
   tourOperator: string
   price: string,
-  img?: string,
+  img: string
   type: string,
   date: string
 }
 
-export type ToutType = 'Одиночный' | 'Групповой';
+export type TourType = 'Одиночный' | 'Групповой';
 
 export interface ITourTypeSelect {
   label?: string,
@@ -19,14 +18,14 @@ export interface ITourTypeSelect {
 }
 
 export interface INearestTour extends ITour {
-  locationId: string,
+  locationId: string
 }
 
 export interface ITourLocation {
   id: string,
-  name: string,
+  name: string
 }
 
 export interface INearestTourWithLocation extends INearestTour {
-  region? : ITourLocation,
+  region?: ITourLocation
 }

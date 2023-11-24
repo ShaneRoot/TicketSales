@@ -12,7 +12,6 @@ import { RegistrationComponent } from './registration/registration.component';
 import { ToastModule } from 'primeng/toast';
 import {MessageService} from "primeng/api";
 
-
 @NgModule({
   declarations: [
     AuthorizationComponent,

@@ -7,7 +7,7 @@ import {InputTextModule} from "primeng/inputtext";
 import {InputNumberModule} from "primeng/inputnumber";
 import {CalendarModule} from "primeng/calendar";
 import {CarouselModule} from "primeng/carousel";
-
+import { TabViewModule } from 'primeng/tabview';
 
 @NgModule({
   declarations: [
@@ -21,7 +21,8 @@ import {CarouselModule} from "primeng/carousel";
     InputNumberModule,
     CalendarModule,
     CarouselModule,
-    FormsModule
+    FormsModule,
+    TabViewModule
   ]
 })
 export class TicketInfoModule {
