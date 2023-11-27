@@ -10,7 +10,7 @@ import {ConfigService} from "@service/config/config.service";
 @Component({
   selector: 'app-authorization',
   templateUrl: './authorization.component.html',
-  styleUrls: ['./authorization.component.css']
+  styleUrls: ['./authorization.component.scss']
 })
 
 export class AuthorizationComponent implements OnInit, OnDestroy {

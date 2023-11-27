@@ -39,7 +39,7 @@ export class BlocksStyleDirective implements OnInit, AfterViewInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges):void {
     console.log('ch', changes);
-    if (changes['data'].currentValue && changes['data'].firstChange){
+    if (changes['data']?.currentValue && changes['data']?.firstChange){
       setTimeout(()=>{
         this.render();
       }, 1000)

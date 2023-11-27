@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { TicketRestService} from "@service/tickets-rest/tickets-rest.service";
 import {map, Observable, Subject} from 'rxjs';
-import {INearestTour, ITour, ITourLocation, ITourTypeSelect} from "@models/tours";
+import {ICustomTicketData, INearestTour, ITour, ITourLocation, ITourTypeSelect} from "@models/tours";
 import { ToastModule } from 'primeng/toast';
 @Injectable({
   providedIn: 'root'
@@ -43,6 +43,24 @@ export class TicketService {
   getToursLocation(): Observable<ITourLocation[]> {
     return this.ticketServiceRest.getLocationList();
 
+  }
+
+  getRandomNearestEvent(type: number): Observable<INearestTour> {
+    return this.ticketServiceRest.getRandomNearestEvent(type);
+  }
+
+  transformData(data: INearestTour[], regions: ITourLocation[]): ICustomTicketData[] {
+    const newTicketData: ICustomTicketData[] = [];
+    data.forEach((el: INearestTour) => {
+      const newEl = <ICustomTicketData> {...el};
+      newEl.region = <ICustomTicketData>regions.find((region : ITourLocation) => el.locationId === region.id) || {};
+      newTicketData.push(newEl);
+    });
+    return  newTicketData;
+  }
+
+  sendTourData(data: any): Observable<any>{
+    return this.ticketServiceRest.sendTourData(data);
   }
 
 }

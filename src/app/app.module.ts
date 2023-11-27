@@ -17,6 +17,7 @@ import {ToastModule} from "primeng/toast";
 import {SettingsModule} from "./pages/settings/settings.module";
 
 
+
 function initializeApp(config: ConfigService) {
   return () => config.loadPromise().then(() => {
     console.log('---CONFIG LOADED--', ConfigService.config)

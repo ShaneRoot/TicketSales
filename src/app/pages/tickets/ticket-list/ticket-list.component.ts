@@ -15,7 +15,7 @@ export class TicketListComponent implements OnInit, OnDestroy, AfterViewInit {
   tickets: ITour[] = [];
   loaded = false;
   ticketsCopy: ITour[];
-  loadCountBlock: false;
+  loadCountBlock: boolean = false;
   defaultDate: string;
 
   @ViewChild('tourWrap', {read: BlocksStyleDirective}) blockDirective: BlocksStyleDirective;

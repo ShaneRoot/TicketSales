@@ -7,11 +7,13 @@ import {InputTextModule} from "primeng/inputtext";
 import {MessageService} from "primeng/api";
 import {ChangePasswordComponent} from "./settings/change-password/change-password.component";
 import {SettingsComponent} from "./settings/settings.component";
+import { StatisticComponent } from './statistic/statistic.component';
+import {TableModule} from "primeng/table";
 
 
 
 @NgModule({
-  declarations: [ChangePasswordComponent
+  declarations: [ChangePasswordComponent, StatisticComponent
 
   ],
 
@@ -23,9 +25,11 @@ import {SettingsComponent} from "./settings/settings.component";
     InputTextModule,
     FormsModule,
     ReactiveFormsModule,
+    TableModule
   ],
   exports: [
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    StatisticComponent
   ],
   providers: [MessageService]
 })

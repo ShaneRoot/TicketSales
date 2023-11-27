@@ -1,8 +1,8 @@
 <div>
-  <div *ngIf="loadCountBlock" >
+  <ng-container *ngIf="loadCountBlock" >
     <p>Количество элементов: {{tickets.length}}</p>
     <p >Активный элемент: {{blockDirective.activeElementIndex}}</p>
-  </div>
+  </ng-container>
 
   <div>
     <input #ticketSearch [(ngModel)]="ticketSearchValue" type="text" pInputText />
@@ -23,7 +23,7 @@
          *ngFor="let item of tickets; let i = index">
       <div class="ticket-title">{{item.name}}</div>
       <div class="ticket-img">
-        <img class="w-100" src="/assets/img/{{item.img}}" alt="/"/>
+        <img class="w-100" src="/assets/img/{{item.img}}"/>
       </div>
 
     </div>

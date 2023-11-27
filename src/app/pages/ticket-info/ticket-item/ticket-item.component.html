@@ -16,7 +16,8 @@
       <h4>Личная информация</h4>
       <div class="mt-3 user-info" [formGroup]="userForm" (ngSubmit)="onSubmit()">
         <div class="mt-3">
-          <span class="mx-3">Имя</span>
+          <!--<span class="mx-3">Имя</span>-->
+          <ng-container *ngTemplateOutlet="userFieldTitle; context: {titleValue: 'Имя'}"></ng-container>
           <input type="text"
                  class="mt-3"
                  pInputText
@@ -25,7 +26,8 @@
           />
         </div>
         <div class="mt-3">
-          <span class="mx-3">Фамилия</span>
+          <!-- <span class="mx-3">Фамилия</span>-->
+          <ng-container *ngTemplateOutlet="userFieldTitle; context: {titleValue: 'Фамилия'}"></ng-container>
           <input type="text"
                  pInputText
                  class="mt-3"
@@ -35,7 +37,8 @@
         </div>
 
         <div class="mt-3">
-          <span class="mx-3">Номер карты</span>
+          <!--   <span class="mx-3">Номер карты</span>-->
+          <ng-container *ngTemplateOutlet="userFieldTitle; context: {titleValue: 'Номер карты'}"></ng-container>
           <input type="text"
                  pInputText
                  class="mt-3"
@@ -45,29 +48,32 @@
         </div>
 
         <div class="mt-3">
-          <span class="mx-3">Возраст</span>
+          <!--<span class="mx-3">Возраст</span>-->
+          <ng-container *ngTemplateOutlet="userFieldTitle; context: {titleValue: 'Возраст'}"></ng-container>
           <p-inputNumber
-                     formControlName="age"
-                     [showButtons]="true"
-                     [min]="0">
+            formControlName="age"
+            [showButtons]="true"
+            [min]="0">
           </p-inputNumber>
         </div>
 
         <div class="mt-3">
-          <span class="mx-3">День рождения</span>
+          <!-- <span class="mx-3">День рождения</span>-->
+          <ng-container *ngTemplateOutlet="userFieldTitle; context: {titleValue: 'День рождения'}"></ng-container>
           <p-calendar
-            formControlName="birthDate"
+            formControlName="birthDay"
             (onSelect)="selectData($event)"
             placeholder="Выберите дату рождения">
           </p-calendar>
         </div>
 
         <div class="mt-3">
-          <span for="citizenship" class="mx-3">Гражданство</span>
+          <!--<span for="citizen" class="mx-3">Гражданство</span>-->
+          <ng-container *ngTemplateOutlet="userFieldTitle; context: {titleValue: 'Гражданство'}"></ng-container>
           <input type="text"
                  class="mt-3"
                  pInputText
-                 formControlName="citizenship"
+                 formControlName="citizen"
                  placeholder="Введите гражданство"/>
         </div>
 
@@ -75,7 +81,7 @@
           <button
             type="submit"
             class="btn btn-primary"
-            (click)="ngOnInit()"
+            (click)="initTour()"
             [disabled]="!userForm.valid">
             Перейти к оформлению
           </button>
@@ -87,7 +93,7 @@
       <h4>Похожие туры</h4>
 
       <div>
-      <!--  <input #ticketSearch [(ngModel)]="ticketSearchValue" type="text" pInputText>-->
+        <input #ticketSearch [(ngModel)]="ticketSearchValue" type="text" pInputText>
       </div>
 
       <p-carousel [value]="nearestTour">
@@ -99,6 +105,9 @@
         </ng-template>
       </p-carousel>
     </div>
-
   </div>
 </div>
+
+<ng-template #userFieldTitle let-value = "titleValue">
+  <span class="mx-3">{{value}}</span>
+</ng-template>
